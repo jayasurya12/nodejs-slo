@@ -1,0 +1,42 @@
+{
+    "title": "SLO Dashboard",
+    "widgets": [
+      {
+        "definition": {
+          "type": "timeseries",
+          "title": "Order Success Rate",
+          "requests": [
+            {
+              "q": "sum:order.success{*}.as_count() / (sum:order.success{*}.as_count() + sum:order.failed{*}.as_count())",
+              "display_type": "line"
+            }
+          ]
+        }
+      },
+      {
+        "definition": {
+          "type": "timeseries",
+          "title": "User Login Success Rate",
+          "requests": [
+            {
+              "q": "sum:user.login.success{*}.as_count() / (sum:user.login.success{*}.as_count() + sum:user.login.failed{*}.as_count())",
+              "display_type": "line"
+            }
+          ]
+        }
+      },
+      {
+        "definition": {
+          "type": "timeseries",
+          "title": "Inventory Availability",
+          "requests": [
+            {
+              "q": "sum:inventory.success{*}.as_count() / (sum:inventory.success{*}.as_count() + sum:inventory.failed{*}.as_count())",
+              "display_type": "line"
+            }
+          ]
+        }
+      }
+    ],
+    "layout_type": "ordered"
+  }

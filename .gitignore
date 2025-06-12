@@ -1,0 +1,39 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+
+# Logs
+logs/
+*.log
+
+# Runtime files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# IDE settings
+.vscode/
+.idea/
+.DS_Store
+
+# Docker
+**/Dockerfile
+docker-compose.override.yml
+
+# Optional OS files
+Thumbs.db
+
+# Optional build outputs
+dist/
+build/
+coverage/
+
+# Misc
+*.tgz
+*.swp

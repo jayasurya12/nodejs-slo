@@ -1,0 +1,59 @@
+version: '3.9'
+services:
+  user-service:
+    build: ./services/user-service
+    ports:
+      - "3001:3001"
+    environment:
+      - DD_AGENT_HOST=datadog-agent
+    depends_on:
+      - datadog-agent
+
+  order-service:
+    build: ./services/order-service
+    ports:
+      - "3002:3002"
+    environment:
+      - DD_AGENT_HOST=datadog-agent
+    depends_on:
+      - datadog-agent
+
+  inventory-service:
+    build: ./services/inventory-service
+    ports:
+      - "3003:3003"
+    environment:
+      - DD_AGENT_HOST=datadog-agent
+    depends_on:
+      - datadog-agent
+
+  api-gateway:
+    build: ./services/api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - DD_AGENT_HOST=datadog-agent
+    depends_on:
+      - datadog-agent
+
+  simulator:
+    build: ./simulator
+    command: ["node", "load-generator.js"]
+    depends_on:
+      - user-service
+      - order-service
+      - inventory-service
+      - api-gateway
+
+  datadog-agent:
+    image: gcr.io/datadoghq/agent:latest
+    env_file:
+      - .env
+    environment:
+      - DD_SITE=datadoghq.com
+      - DD_LOGS_ENABLED=true
+      - DD_APM_ENABLED=true
+    ports:
+      - "8126:8126"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
