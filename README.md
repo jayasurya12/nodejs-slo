@@ -15,7 +15,7 @@ datadog-agent	8126	Collects metrics/APM for Datadog
 bash
 Copy
 Edit
-git clone https://github.com/your-username/slo-simulator.git
+git clone https://github.com/jayasurya12/nodejs-slo
 cd slo-simulator
 2. Create a .env file
 env

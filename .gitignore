@@ -23,7 +23,7 @@ pids/
 .DS_Store
 
 # Docker
-**/Dockerfile
+Dockerfile
 docker-compose.override.yml
 
 # Optional OS files
