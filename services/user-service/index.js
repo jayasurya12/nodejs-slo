@@ -6,6 +6,12 @@ const app = express();
 
 app.use(express.json());
 
+// Log every incoming request
+app.use((req, res, next) => {
+  console.log(`📥 [User-Service] Incoming: ${req.method} ${req.url}`);
+  next();
+});
+
 // Simulate a success/failure scenario
 const simulate = async (metricNameSuccess, metricNameFail, successRate = 0.7, delay = 500) => {
   const random = Math.random();
@@ -31,8 +37,7 @@ const routes = [
 routes.forEach((action) => {
   app.post(`/user/${action}`, async (req, res) => {
     const span = tracer.startSpan(`user.${action}`);
-
-    const start = Date.now(); // For optional timing metric
+    const start = Date.now();
 
     try {
       await simulate(`user.${action}.success`, `user.${action}.failed`, 0.8, 300);
@@ -42,6 +47,7 @@ routes.forEach((action) => {
     } finally {
       const elapsed = Date.now() - start;
       metrics.timing(`user.${action}.latency`, elapsed);
+      console.log(`⏱️  [Latency] user.${action}: ${elapsed}ms`);
       span.finish();
     }
   });
