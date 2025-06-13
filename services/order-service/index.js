@@ -1,5 +1,6 @@
 const express = require('express');
-const tracer = require('../../lib/datadog/tracer');
+// const tracer = require('../../lib/datadog/tracer');
+const tracer = require('dd-trace').init();
 const metrics = require('../../lib/datadog/metrics');
 const app = express();
 

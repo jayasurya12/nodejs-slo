@@ -1,7 +1,7 @@
 {
-  "name": "api-gateway",
+  "name": "order-service",
   "version": "1.0.0",
-  "description": "API Gateway for routing between services in SLO simulator",
+  "description": "Order microservice for SLO simulator with Datadog integration",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -10,12 +10,13 @@
   "keywords": [
     "slo",
     "datadog",
-    "gateway"
+    "order"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.8",
+    "dd-trace": "^5.56.0",
     "express": "^4.18.2"
   },
   "devDependencies": {
