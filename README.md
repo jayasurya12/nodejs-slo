@@ -70,24 +70,40 @@ npm run start:dev
 pgsql
 Copy
 Edit
-.
+
+/Nodejs-Slo-Simulator
 ├── services/
 │   ├── user-service/
+│   │   ├── index.js
+│   │   ├── Dockerfile ✅
+│   │   └── package.json ✅
 │   ├── order-service/
+│   │   ├── index.js
+│   │   ├── Dockerfile ✅
+│   │   └── package.json ✅
 │   ├── inventory-service/
+│   │   ├── index.js
+│   │   ├── Dockerfile ✅
+│   │   └── package.json ✅
 │   └── api-gateway/
+│       ├── index.js
+│       ├── Dockerfile ✅
+│       └── package.json ✅
 ├── simulator/
-│   └── load-generator.js
+│   ├── load-generator.js
+│   ├── Dockerfile ✅
+│   └── package.json ✅
 ├── lib/
 │   └── datadog/
 │       ├── tracer.js
 │       └── metrics.js
 ├── dashboard/
 │   └── slo-dashboard.json
-├── docker-compose.yml
-├── .env
-└── README.md
-🧹 TODO
+├── .env ✅
+├── .gitignore ✅
+├── docker-compose.yml ✅
+└── README.md ✅
+
  Add retry logic to simulator
 
  Add latency and error budget calculations in Datadog
